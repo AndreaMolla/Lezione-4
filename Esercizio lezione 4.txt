@@ -1,0 +1,256 @@
+Primo caso Laptop-PT0 192.168.100.100 invio pacchetto a PC0 192.168.100.103
+I due computer riescono a scambiarsi pacchetti grazie a uno switch che li fa comunicare.
+Quando il pachetto viene creato sul laptop-PT0  
+In Layers  DEST ADDR:000A.41B3.7BDD 
+           SRC ADDR:0007.EC44.39ED 
+           ID:0x001e
+           TTL:255
+           SRC IP:192.168.100.100
+           DST IP:192.168.100.103 
+
+Out Layers DEST ADDR:000A.41B3.7BDD 
+           SRC ADDR:0007.EC44.39ED
+           ID:0x001e
+           TTL:255
+           SRC IP:192.168.100.100
+           DST IP:192.168.100.103
+
+Primo balzo allo switch0
+In Layers  DEST ADDR:000A.41B3.7BDD 
+           SRC ADDR:0007.EC44.39ED 
+           ID:0x001e  
+           TTL:255  
+           SRC IP:192.168.100.100 
+           DST IP:192.168.100.103
+
+Out Layers DEST ADDR:0007.EC44.39ED 
+           SRC ADDR:000A.41B3.7BDD 
+           ID:0x000b
+           TTL:128 
+           SRC IP:192.168.100.103 
+           DST IP:192.168.100.100
+
+Secondo balzo al PC0 192.168.100.103
+In Layers  DEST ADDR:0007.EC44.39ED 
+           SRC ADDR:000A.41B3.7BDD 
+           ID:0x000b 
+           TTL:128
+           SRC IP:192.168.100.103 
+           DST IP:192.168.100.100 
+
+Out Layers DEST ADDR:0007.EC44.39ED 
+           SRC ADDR:000A.41B3.7BDD
+           ID:0x000b 
+           TTL:128
+           SRC IP:192.168.100.103 
+           DST IP:192.168.100.100
+
+Terzo balzo allo Switch0
+In Layers  DEST ADDR:0007.EC44.39ED 
+           SRC ADDR:000A.41B3.7BDD
+           ID:0x000b 
+           TTL:128
+           SRC IP:192.168.100.103 
+           DST IP:192.168.100.100
+
+
+
+Secondo caso Laptop-PT0 192.168.100.100 invio pacchetto a Laptop-PT2 192.168.200.100
+Le due reti comunicano grazie al router, che permette tramite un 2 gateway di farle comunicare e di farle scambiare pachetti, ogni rete a un suo gateway che viene associato a ogni dispositivo connesso alla rete.I due 
+Quando il pachetto viene creato sul laptop-PT0 
+In Layers  DEST ADDR:000A.F3C1.2101 
+           SRC ADDR:0007.EC44.39ED 
+           ID:0x0022
+           TTL:255 
+           SRC IP:192.168.100.100 
+           DST IP:192.168.200.100 
+
+Out Layers DEST ADDR:000A.F3C1.2101 
+           SRC ADDR:0007.EC44.39ED 
+           ID:0x0022 
+           TTL:255
+           SRC IP:192.168.100.100 
+           DST IP:192.168.200.100 
+
+Primo balzo allo Switch0 
+In Layers  DEST ADDR:000A.F3C1.2101 
+           SRC ADDR:0007.EC44.39ED
+           ID:0x0022
+           TTL:255 
+           SRC IP:192.168.100.100 
+           DST IP:192.168.200.100 
+
+Out Layers DEST ADDR:0060.7086.B12E 
+           SRC ADDR:000A.F3C1.2102 
+           ID:0x0022
+           TTL:254
+           SRC IP:192.168.100.100
+           DST IP:192.168.200.100 
+
+Secondo balzo al Router0
+In Layers  DEST ADDR:0060.7086.B12E 
+           SRC ADDR:000A.F3C1.2102
+           ID:0x0022 
+           TTL:254 
+           SRC IP:192.168.100.100 
+           DST IP:192.168.200.100 
+
+Out Layers DEST ADDR:0060.7086.B12E
+           SRC ADDR:000A.F3C1.2102
+           ID:0x0022
+           TTL:254 
+           SRC IP:192.168.100.100
+           DST IP:192.168.200.100 
+
+Terzo balzo allo Switch1
+In Layers  DEST ADDR:0060.7086.B12E
+           SRC ADDR:000A.F3C1.2102
+           ID:0x0022
+           TTL:254 
+           SRC IP:192.168.100.100
+           DST IP:192.168.200.100 
+
+Out Layers DEST ADDR:000A.F3C1.2102 
+           SRC ADDR:0060.7086.B12E
+           ID:0x0002 
+           TTL:128 
+           SRC IP:192.168.200.100 
+           DST IP:192.168.100.100 
+
+Quarto balzo al Laptop-PT2
+In Layers  DEST ADDR:000A.F3C1.2102    
+           SRC ADDR:0060.7086.B12E            
+           ID:0x0002
+           TTL:128 
+           SRC IP:192.168.200.100 
+           DST IP:192.168.100.100
+
+Out Layers DEST ADDR:000A.F3C1.2102 
+           SRC ADDR:0060.7086.B12E 
+           ID:0x0002
+           TTL:128
+           SRC IP:192.168.200.100 
+           DST IP:192.168.100.100 
+
+Quinto balzo allo Switch1
+In Layers  DEST ADDR:000A.F3C1.2102 
+           SRC ADDR:0060.7086.B12E
+           ID:0x0002 
+           TTL:128 
+           SRC IP:192.168.200.100 
+           DST IP:192.168.100.100 
+
+Out Layers DEST ADDR:0007.EC44.39ED 
+           SRC ADDR:000A.F3C1.2101 
+           ID:0x0002 
+           TTL:127
+           SRC IP:192.168.200.100 
+           DST IP:192.168.100.100 
+
+Sesto balzo al Router0
+In Layers  DEST ADDR:0007.EC44.39ED 
+           SRC ADDR:000A.F3C1.2101 
+           ID:0x0002 
+           TTL:127 
+           SRC IP:192.168.200.100 
+           DST IP:192.168.100.100 
+
+Out Layers DEST ADDR:0007.EC44.39ED 
+           SRC ADDR:000A.F3C1.2101 
+           ID:0x0002 
+           TTL:127 
+           SRC IP:192.168.200.100 
+           DST IP:192.168.100.100 
+
+Settimo balzo allo Switch0
+In Layers  DEST ADDR:0007.EC44.39ED 
+           SRC ADDR:000A.F3C1.2101 
+           ID:0x0002 
+           TTL:127 
+           SRC IP:192.168.200.100 
+           DST IP:192.168.100.100 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
